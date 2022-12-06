@@ -17,14 +17,8 @@ const fetchRandomDrink = async () => {
   return await reponseCocktail.json();
 };
 
-const removeChild = (elementName) => {
-  while (elementName.firstChild) {
-    div.removeChild(elementName.firstChild);
-  }
-};
-
 const showRandomCocktail = async () => {
-  removeChild(div);
+  div.innerHTML = "";
 
   const reponse = await fetchRandomDrink();
   const randomDrink = reponse.drinks[0];
