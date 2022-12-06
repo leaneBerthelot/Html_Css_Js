@@ -10,10 +10,6 @@ const addElement = (elementName, elementContent, elementUrl, ParentElement) => {
   return element;
 };
 
-const root = document.getElementById("root");
-const button = addElement("button", "Click me", null, root);
-const div = addElement("div", null, null, root);
-
 const fetchRandomDrink = async () => {
   const reponseCocktail = await fetch(
     "https://www.thecocktaildb.com/api/json/v1/1/random.php"
@@ -49,4 +45,7 @@ const showRandomCocktail = async () => {
   addElement("img", null, randomDrink.strDrinkThumb, div);
 };
 
+const root = document.getElementById("root");
+const button = addElement("button", "Click me", null, root);
+const div = addElement("div", null, null, root);
 button.addEventListener("click", showRandomCocktail);
