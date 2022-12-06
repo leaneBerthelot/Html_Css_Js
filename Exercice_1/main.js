@@ -14,8 +14,7 @@ const fetchRandomDrink = async () => {
   const reponseCocktail = await fetch(
     "https://www.thecocktaildb.com/api/json/v1/1/random.php"
   );
-  const coktail = await reponseCocktail.json();
-  return coktail;
+  return await reponseCocktail.json();
 };
 
 const removeChild = (elementName) => {
