@@ -22,10 +22,14 @@ const fetchRandomDrink = async () => {
   return coktail;
 };
 
-button.addEventListener("click", async () => {
-  while (div.firstChild) {
-    div.removeChild(div.firstChild);
+const removeChild = (elementName) => {
+  while (elementName.firstChild) {
+    div.removeChild(elementName.firstChild);
   }
+};
+
+const showRandomCocktail = async () => {
+  removeChild(div);
 
   const reponse = await fetchRandomDrink();
   const randomDrink = reponse.drinks[0];
@@ -43,4 +47,6 @@ button.addEventListener("click", async () => {
   }
 
   addElement("img", null, randomDrink.strDrinkThumb, div);
-});
+};
+
+button.addEventListener("click", showRandomCocktail);
