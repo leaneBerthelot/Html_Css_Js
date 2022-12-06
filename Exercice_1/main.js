@@ -1,12 +1,18 @@
+const addElement = (elementName, elementContent, elementUrl, ParentElement) => {
+  const element = document.createElement(elementName);
+  if (null != elementContent) {
+    element.textContent = elementContent;
+  }
+  if (null != elementUrl) {
+    element.src = elementUrl;
+  }
+  ParentElement.appendChild(element);
+  return element;
+};
+
 const root = document.getElementById("root");
-
-const button = document.createElement("button");
-button.textContent = "Click me";
-root.appendChild(button);
-
-const div = document.createElement("div");
-div.className = "randomCoktail";
-root.appendChild(div);
+const button = addElement("button", "Click me", null, root);
+const div = addElement("div", null, null, root);
 
 const fetchRandomDrink = async () => {
   const reponseCocktail = await fetch(
@@ -16,30 +22,7 @@ const fetchRandomDrink = async () => {
   return coktail;
 };
 
-const addElement = (elementname, content) => {
-  const element = document.createElement(elementname);
-  element.textContent = content;
-  div.appendChild(element);
-};
-
 button.addEventListener("click", async () => {
-  /*
-    fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
-    .then((response) => {
-      return response.json();
-    })
-    .then((response) => {
-      const randomDrink = response.drinks[0];
-      const h1 = document.createElement("h1");
-
-      h1.textContent = randomDrink.strDrink;
-
-      root.appendChild(h1);
-    })
-    .catch((error) => {
-      alert("Erreur : " + error);
-    });*/
-
   while (div.firstChild) {
     div.removeChild(div.firstChild);
   }
@@ -47,27 +30,17 @@ button.addEventListener("click", async () => {
   const reponse = await fetchRandomDrink();
   const randomDrink = reponse.drinks[0];
 
-  addElement("h1", randomDrink.strDrink);
+  addElement("h1", randomDrink.strDrink, null, div);
+  addElement("p", "Catégorie : " + randomDrink.strCategory, null, div);
+  addElement("p", "Instructions : " + randomDrink.strInstructions, null, div);
 
-  const h1 = document.createElement("h1");
-  h1.textContent = randomDrink.strDrink;
-  div.appendChild(h1);
+  const ul = addElement("ul", null, null, div);
 
-  const p1 = document.createElement("p");
-  p1.textContent = randomDrink.strCategory;
-  div.appendChild(p1);
-
-  const p2 = document.createElement("p");
-  p2.textContent = randomDrink.strInstructions;
-  div.appendChild(p2);
-
-  for (let i = 1; i <= 15; i++) {
-    const p = document.createElement("p");
-    p.textContent = randomDrink["strIngredient" + i];
-    div.appendChild(p);
+  let i = 1;
+  while (null != randomDrink["strIngredient" + i] || i > 15) {
+    addElement("li", randomDrink["strIngredient" + i], null, ul);
+    i++;
   }
 
-  const img = document.createElement("img");
-  img.src = randomDrink.strDrinkThumb;
-  div.appendChild(img);
+  addElement("img", null, randomDrink.strDrinkThumb, div);
 });
