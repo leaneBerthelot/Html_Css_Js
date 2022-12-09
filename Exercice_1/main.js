@@ -1,12 +1,4 @@
-// créer un nouveau bouton
-// au clic sur ce bouton, faites un appel fetch https://www.thecocktaildb.com/api/json/v1/1/search.php?s=
-// affichez les résultats dans votre DOM
-// créez vos différentes fonctions dans une ou plusieurs classes
-// Si vous avez terminé, tentez de refactoriser votre classe en plusieurs classes
-// en utilisant le principe SRP de SOLID
-// https://www.freecodecamp.org/news/solid-principles-single-responsibility-principle-explained/
-
-class Utils {
+class DomElementsHandler {
   static addElement(elementName, parentElement, elementContent = "") {
     const element = document.createElement(elementName);
     element.textContent = elementContent;
@@ -26,30 +18,34 @@ class Utils {
   };
 }
 
-class Cocktails {
+class CocktailsRender {
   constructor(url, parent) {
     this.url = url;
     this.parent = parent;
   }
 
   show(coktail) {
-    Utils.addElement("h1", this.parent, coktail.strDrink);
-    Utils.addElement("p", this.parent, "Catégorie : " + coktail.strCategory);
-    Utils.addElement(
+    DomElementsHandler.addElement("h1", this.parent, coktail.strDrink);
+    DomElementsHandler.addElement(
+      "p",
+      this.parent,
+      "Catégorie : " + coktail.strCategory
+    );
+    DomElementsHandler.addElement(
       "p",
       this.parent,
       "Instructions : " + coktail.strInstructions
     );
 
-    const ul = Utils.addElement("ul", this.parent);
+    const ul = DomElementsHandler.addElement("ul", this.parent);
 
     let i = 1;
     while (null != coktail["strIngredient" + i] || i > 15) {
-      Utils.addElement("li", ul, coktail["strIngredient" + i]);
+      DomElementsHandler.addElement("li", ul, coktail["strIngredient" + i]);
       i++;
     }
 
-    Utils.addImg("img", this.parent, coktail.strDrinkThumb);
+    DomElementsHandler.addImg("img", this.parent, coktail.strDrinkThumb);
   }
 
   async showAll() {
@@ -62,11 +58,11 @@ class Cocktails {
 class Main {
   init() {
     const root = document.getElementById("root");
-    const button = Utils.addElement("button", root, "Click me");
-    const div = Utils.addElement("div", root);
+    const button = DomElementsHandler.addElement("button", root, "Click me");
+    const div = DomElementsHandler.addElement("div", root);
     button.addEventListener("click", async () => {
-      Utils.clearElement(div);
-      const coktailsShow = new Cocktails(
+      DomElementsHandler.clearElement(div);
+      const coktailsShow = new CocktailsRender(
         "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=",
         div
       );
