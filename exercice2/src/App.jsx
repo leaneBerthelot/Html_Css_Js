@@ -1,12 +1,12 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Articles from "./components/Articles";
+import RandomCocktail from "./components/RandomCocktail";
 
 function App() {
   return (
     <div>
       <Header />
-      <Articles />
+      <RandomCocktail />
       <Footer />
     </div>
   );

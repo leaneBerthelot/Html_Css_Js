@@ -62,7 +62,7 @@ const Articles = () => {
   return (
     <section>
       {publishedArticles.map((article) => {
-        return <Article thisArticle={article} />;
+        return <Article currentArticle={article} />;
       })}
     </section>
   );

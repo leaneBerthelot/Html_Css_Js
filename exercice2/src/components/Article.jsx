@@ -1,11 +1,11 @@
 import React from "react";
 
 const Article = (props) => {
-  const article = props.thisArticle;
+  const article = props.currentArticle;
 
   return (
     <article key={article.id}>
-      <h1>{props.thisArticle.title}</h1>
+      <h1>{article.title}</h1>
       <h2>{article.subtitle}</h2>
       <img src={article.image} alt={article.title} />
       <p>{article.date.toLocaleDateString("fr")}</p>
