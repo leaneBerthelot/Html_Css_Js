@@ -1,4 +1,5 @@
 import React from "react";
+import Article from "./Article";
 
 const Articles = () => {
   const articles = [
@@ -15,6 +16,8 @@ const Articles = () => {
       content: "Contenu de l'article 1",
 
       published: true,
+
+      id: 1,
     },
 
     {
@@ -30,6 +33,8 @@ const Articles = () => {
       content: "Contenu de l'article 2",
 
       published: false,
+
+      id: 2,
     },
 
     {
@@ -45,6 +50,8 @@ const Articles = () => {
       content: "Contenu de l'article 3",
 
       published: true,
+
+      id: 3,
     },
   ];
 
@@ -53,18 +60,11 @@ const Articles = () => {
   );
 
   return (
-    <div>
+    <section>
       {publishedArticles.map((article) => {
-        return (
-          <article key={article.title}>
-            <h1>{article.title}</h1>
-            <h2>{article.subtitle}</h2>
-            <img src={article.image} alt="image article" />
-            <p>{article.date.toLocaleDateString("fr")}</p>
-          </article>
-        );
+        return <Article thisArticle={article} />;
       })}
-    </div>
+    </section>
   );
 };
 
