@@ -1,15 +1,12 @@
 import React from "react";
 import Search from "../components/Search";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import Layout from "../components/Layout";
 
 const SearchCocktail = () => {
   return (
-    <div>
-      <Header />
+    <Layout>
       <Search />
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

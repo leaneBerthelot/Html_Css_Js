@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SearchFormCocktail from "./SearchFormCocktail";
-import SearchResultCocktail from "./SearchResultCocktail";
+import Cocktails from "./Cocktails";
 
 const Search = () => {
   const [searchCocktails, setSearchCocktails] = useState([]);
@@ -20,7 +20,7 @@ const Search = () => {
   return (
     <div>
       <SearchFormCocktail formCallback={handleSearch} />
-      <SearchResultCocktail searchCocktails={searchCocktails} />
+      <Cocktails cocktails={searchCocktails} />
     </div>
   );
 };

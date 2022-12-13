@@ -1,15 +1,12 @@
 import React from "react";
 import RandomCocktail from "../components/RandomCocktail";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import Layout from "../components/Layout";
 
 const Random = () => {
   return (
-    <div>
-      <Header />
+    <Layout>
       <RandomCocktail />
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 
