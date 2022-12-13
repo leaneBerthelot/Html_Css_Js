@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Cocktails from "./Cocktails";
+import SearchFormCocktail from "./SearchFormCocktail";
+import SearchResultCocktail from "./SearchResultCocktail";
 
 const Search = () => {
   const [searchCocktails, setSearchCocktails] = useState([]);
@@ -18,11 +19,8 @@ const Search = () => {
 
   return (
     <div>
-      <form onSubmit={handleSearch} method="get">
-        <input type="text" name="search" id="search"></input>
-        <input type="submit" value="Search"></input>
-      </form>
-      <Cocktails cocktails={searchCocktails} />
+      <SearchFormCocktail formCallback={handleSearch} />
+      <SearchResultCocktail searchCocktails={searchCocktails} />
     </div>
   );
 };

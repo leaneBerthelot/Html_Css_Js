@@ -1,14 +1,17 @@
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Search from "./components/Search";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Accueil from "./page/Accueil";
+import Random from "./page/Random";
+import SearchCocktail from "./page/SearchCocktail";
 
 function App() {
   return (
-    <div>
-      <Header />
-      <Search />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Accueil />} />
+        <Route path="/search" element={<SearchCocktail />} />
+        <Route path="/random" element={<Random />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
