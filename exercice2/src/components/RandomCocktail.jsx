@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Cocktail from "./Cocktail";
 
-//www.thecocktaildb.com/api/json/v1/1/random.php
 const RandomCocktail = () => {
   const [randomCocktail, setRandomCocktail] = useState(null);
 

@@ -1,0 +1,20 @@
+.result{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.recipeCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 20%;
+    padding: 20px;
+    background: lightgray;
+    margin: 10px;
+}
+
+img{
+    width: 100%;
+}
