@@ -30,7 +30,9 @@ const Home = ({ handleSubmit }) => {
     <Layout handleSubmit={handleSubmit}>
       <RandomRecipe />
       <RecipesList recipes={recipes} />
-      <Link to="/Recipes">Voir plus</Link>
+      <div className="seeAll">
+        <Link to="/Recipes">Voir toutes les recettes</Link>
+      </div>
     </Layout>
   );
 };
